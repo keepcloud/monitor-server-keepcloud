@@ -1,7 +1,7 @@
 {
     "esm": {
         "version": "2.5",
-        "website": "http://www.ezservermonitor.com",
+        "website": "https://keepcloud.io",
         "check_updates": true,
         "auto_refresh": 0,
         "theme": "blue",
@@ -22,34 +22,70 @@
         ]
     },
     "last_login": {
-        "enable": true,
+        "enable": false,
         "max": 5
     },
     "services": {
         "show_port": true,
         "list": [
             {
-                "name": "Web Server",
+                "name": "Web Server (HTTP)",
                 "host": "localhost",
                 "port": 80,
                 "protocol": "tcp"
             },
             {
-                "name": "Email Server (incoming)",
+                "name": "Web Server (HTTPS)",
                 "host": "localhost",
-                "port": 993,
+                "port": 443,
                 "protocol": "tcp"
             },
             {
-                "name": "Email Server (outgoing)",
+                "name": "Server Redis",
                 "host": "localhost",
-                "port": 587,
+                "port": 6379,
                 "protocol": "tcp"
             },
             {
-                "name": "FTP Server",
+                "name": "PHP-FPM 7.4",
                 "host": "localhost",
-                "port": 21,
+                "port": 9074,
+                "protocol": "tcp"
+            },
+            {
+                "name": "PHP-FPM 8.0",
+                "host": "localhost",
+                "port": 9080,
+                "protocol": "tcp"
+            },
+            {
+                "name": "PHP-FPM 8.1",
+                "host": "localhost",
+                "port": 9081,
+                "protocol": "tcp"
+            },
+            {
+                "name": "PHP-FPM 8.2",
+                "host": "localhost",
+                "port": 9082,
+                "protocol": "tcp"
+            },
+            {
+                "name": "PHP-FPM 8.3",
+                "host": "localhost",
+                "port": 9083,
+                "protocol": "tcp"
+            },
+            {
+                "name": "PHP-FPM 8.4",
+                "host": "localhost",
+                "port": 9074,
+                "protocol": "tcp"
+            },
+            {
+                "name": "Email Server (SMTP)",
+                "host": "localhost",
+                "port": 25,
                 "protocol": "tcp"
             },
             {

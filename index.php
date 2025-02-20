@@ -4,18 +4,21 @@ $Config = new Config();
 $update = $Config->checkUpdate();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1" /> 
-    <title>eZ Server Monitor - <?php echo Misc::getHostname(); ?></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>
+        Monitor -
+        <?php echo Misc::getHostname(); ?>
+    </title>
     <link rel="stylesheet" href="web/css/utilities.css" type="text/css">
     <link rel="stylesheet" href="web/css/frontend.css" type="text/css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script src="js/plugins/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="js/plugins/jquery-3.7.1.min.js" type="text/javascript"></script>
     <script src="js/plugins/jquery.knob.js" type="text/javascript"></script>
     <script src="js/esm.js" type="text/javascript"></script>
     <script>
@@ -44,8 +47,9 @@ $update = $Config->checkUpdate();
 
 <nav role="main">
     <div id="appname">
-        <a href="index.php"><span class="icon-gauge"></span>eSM</a>
-        <a href="<?php echo $Config->get('esm:website'); ?>"><span class="subtitle">eZ Server Monitor - v<?php echo $Config->get('esm:version'); ?></span></a>
+        <a href="index.php">
+            <img src="web/assets/img/base_logo.png" alt="Logo Keepcloud" />
+        </a>
     </div>
 
     <div id="hostname">
@@ -56,12 +60,6 @@ $update = $Config->checkUpdate();
             echo Misc::getHostname().' - '.Misc::getLanIP();
         ?>
     </div>
-
-    <?php if (!is_null($update)): ?>
-        <div id="update">
-            <a href="<?php echo $update['fullpath']; ?>">New version available (<?php echo $update['availableVersion']; ?>) ! Click here to download</a>
-        </div>
-    <?php endif; ?>
 
     <ul>
         <li><a href="#" class="reload" onclick="esm.reloadBlock('all');"><span class="icon-cycle"></span></a></li>
@@ -238,14 +236,11 @@ $update = $Config->checkUpdate();
                     </tr>
                 </thead>
                 <tbody>
-                    
+
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
 
     <div class="box column-left" id="esm-memory">
         <div class="box-header">
@@ -279,7 +274,22 @@ $update = $Config->checkUpdate();
         </div>
     </div>
 
-    <div class="box column-right" id="esm-swap">
+    <div class="box column-right " id="esm-services">
+        <div class="box-header">
+            <h1>Services status</h1>
+            <ul>
+                <li><a href="#" class="reload" onclick="esm.reloadBlock('services');"><span class="icon-cycle"></span></a></li>
+            </ul>
+        </div>
+
+        <div class="box-content">
+            <table>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="box column-left" id="esm-swap">
         <div class="box-header">
             <h1>Swap</h1>
             <ul>
@@ -311,12 +321,11 @@ $update = $Config->checkUpdate();
         </div>
     </div>
 
-
     <div class="cls"></div>
 
 
     <div class="t-center">
-        <div class="box column-left column-33" id="esm-last_login">
+        <div class="box column-left column-33 hidden" id="esm-last_login">
             <div class="box-header">
                 <h1>Last login</h1>
                 <ul>
@@ -335,27 +344,7 @@ $update = $Config->checkUpdate();
             </div>
         </div>
 
-
-
-        <div class="box column-right column-33" id="esm-services">
-            <div class="box-header">
-                <h1>Services status</h1>
-                <ul>
-                    <li><a href="#" class="reload" onclick="esm.reloadBlock('services');"><span class="icon-cycle"></span></a></li>
-                </ul>
-            </div>
-
-            <div class="box-content">
-                <table>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-
-
-
-
-        <div class="box t-center" style="margin: 0 33%;" id="esm-ping">
+        <div class="box t-center hidden" style="margin: 0 33%;" id="esm-ping">
             <div class="box-header">
                 <h1>Ping</h1>
                 <ul>
@@ -371,8 +360,6 @@ $update = $Config->checkUpdate();
         </div>
 
     </div>
-
-    
 
     <div class="cls"></div>
 

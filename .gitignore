@@ -1,3 +1,9 @@
 /web/css/.sass-cache
+
 .htpasswd
+
 .htaccess
+
+supervisord.log
+
+supervisord.pid
