@@ -1,6 +1,6 @@
 <?php
 require 'autoload.php';
-$Config = new Config();
+$Config = new Config;
 $update = $Config->checkUpdate();
 ?>
 <!DOCTYPE html>
@@ -12,8 +12,8 @@ $update = $Config->checkUpdate();
         Monitor -
         <?php echo Misc::getHostname(); ?>
     </title>
-    <link rel="stylesheet" href="web/css/utilities.css" type="text/css">
-    <link rel="stylesheet" href="web/css/frontend.css" type="text/css">
+    <link rel="stylesheet" href="web/css/utilities.min.css" type="text/css">
+    <link rel="stylesheet" href="web/css/frontend.min.css" type="text/css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -36,9 +36,9 @@ $update = $Config->checkUpdate();
 
         esm.getAll();
 
-        <?php if ($Config->get('esm:auto_refresh') > 0): ?>
+        <?php if ($Config->get('esm:auto_refresh') > 0) { ?>
             setInterval(function(){ esm.getAll(); }, <?php echo $Config->get('esm:auto_refresh') * 1000; ?>);
-        <?php endif; ?>
+        <?php } ?>
     });
     </script>
 </head>
@@ -54,11 +54,12 @@ $update = $Config->checkUpdate();
 
     <div id="hostname">
         <?php
-        if ($Config->get('esm:custom_title') != '')
+        if ($Config->get('esm:custom_title') != '') {
             echo $Config->get('esm:custom_title');
-        else
+        } else {
             echo Misc::getHostname().' - '.Misc::getLanIP();
-        ?>
+        }
+?>
     </div>
 
     <ul>
@@ -172,12 +173,12 @@ $update = $Config->checkUpdate();
                         <td>Bogomips</td>
                         <td id="cpu-bogomips"></td>
                     </tr>
-                    <?php if ($Config->get('cpu:enable_temperature')): ?>
+                    <?php if ($Config->get('cpu:enable_temperature')) { ?>
                         <tr>
                             <td>Temperature</td>
                             <td id="cpu-temp"></td>
                         </tr>
-                    <?php endif; ?>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -225,9 +226,9 @@ $update = $Config->checkUpdate();
             <table>
                 <thead>
                     <tr>
-                        <?php if ($Config->get('disk:show_filesystem')): ?>
+                        <?php if ($Config->get('disk:show_filesystem')) { ?>
                             <th class="w10p filesystem">Filesystem</th>
-                        <?php endif; ?>
+                        <?php } ?>
                         <th class="w20p">Mount</th>
                         <th>Use</th>
                         <th class="w15p">Free</th>
@@ -334,13 +335,13 @@ $update = $Config->checkUpdate();
             </div>
 
             <div class="box-content">
-                <?php if ($Config->get('last_login:enable') == true): ?>
+                <?php if ($Config->get('last_login:enable') == true) { ?>
                     <table>
                         <tbody></tbody>
                     </table>
-                <?php else: ?>
+                <?php } else { ?>
                     <p>Disabled</p>
-                <?php endif; ?>
+                <?php } ?>
             </div>
         </div>
 
